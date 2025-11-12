@@ -523,7 +523,6 @@
       const mobMenu = document.getElementById("mobMenu");
       menuBtn?.addEventListener("click", () => {
         const expanded = menuBtn.getAttribute("aria-expanded") === "true";
-        console.log("expanded", expanded);
         menuBtn.setAttribute("aria-expanded", String(!expanded));
         mobMenu.hidden = expanded; // toggle
       });
