@@ -103,6 +103,7 @@
             <span>Abhay Singh</span>
           </div>
           <div class="nav-links" role="navigation" aria-label="Site">
+            <a href="#about">About</a>
             <a href="#services">Services</a>
             <a href="#pricing">Pricing</a>
             <a href="#contact">Contact</a>
@@ -131,11 +132,10 @@
         <div id="mobMenu" hidden>
           <div class="container" style="padding-bottom: 1rem">
             <div class="grid" style="grid-template-columns: 1fr">
+              <a href="#about">About</a>
               <a href="#services">Services</a>
-              <a href="#projects">Projects</a>
               <a href="#pricing">Pricing</a>
               <a href="#contact">Contact</a>
-              <a href="#about">About</a>
             </div>
           </div>
         </div>
@@ -523,8 +523,16 @@
       const mobMenu = document.getElementById("mobMenu");
       menuBtn?.addEventListener("click", () => {
         const expanded = menuBtn.getAttribute("aria-expanded") === "true";
+        console.log("expanded", expanded);
         menuBtn.setAttribute("aria-expanded", String(!expanded));
         mobMenu.hidden = expanded; // toggle
+      });
+
+      mobMenu?.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          mobMenu.hidden = true;
+          menuBtn.setAttribute("aria-expanded", "false");
+        });
       });
 
       // Reveal on scroll (IntersectionObserver)
